@@ -1,0 +1,43 @@
+{%if b is empty %}
+<p>No Books found</p>
+
+{% else %}
+
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Titre</th>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Date de publication</th>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Publié</th>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Catégorie</th>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Auteur</th>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Edit</th> 
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Delete</th>
+         <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Show</th>
+      
+    </tr>
+     {% for books in b %}
+        <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ books.title }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ books.publicationDate|date('Y-m-d') }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ books.published ? 'Oui' : 'Non' }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ books.category }}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ books.author.username }}</td>
+             <td  style="padding: 10px; border: 1px solid #ccc;">
+                    <a href="{{ path('edit_book', {'id': books.id}) }}">Edit</a>
+                </td>
+            <td  style="padding: 10px; border: 1px solid #ccc;">
+                    <a href="{{ path('delete_book', {'id': books.id}) }}">Delete</a>
+                </td>
+                <td  style="padding: 10px; border: 1px solid #ccc;">
+                    <a href="{{ path('showd_book', {'id': books.id}) }}">Show</a>
+                </td>
+                
+        </tr>
+      {% endfor %}
+</table>
+{% endif %}
+
+    <p>Number of Published Books: {{ pc }}</p>
+    <p>Number of Unpublished Books: {{ upc }}</p>
+
+

@@ -1,0 +1,14 @@
+
+
+{% block body %}
+<div style="text-align: center;">
+    <h1>Book Details</h1>
+    <p><strong>Title:</strong> {{ book.title }}</p>
+    <p><strong>Category:</strong> {{ book.category }}</p>
+    <p><strong>Publication Date:</strong> {{ book.publicationDate|date('Y-m-d') }}</p>
+    <p><strong>Author:</strong> {{ book.author.username }}</p>
+    <p><strong>Published:</strong> {{ book.published ? 'Yes' : 'No' }}</p>
+    
+    <a href="{{ path('showlist') }}">Back to List</a>
+    </div>
+{% endblock %}

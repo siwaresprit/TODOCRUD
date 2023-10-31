@@ -1,0 +1,18 @@
+<table style="width: 100%; border-collapse: collapse;">
+    <tr>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Username</th>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">nbbooks</th>
+        <th style="background-color: #333; color: #fff; text-align: left; padding: 10px;">Delete</th>
+      
+    </tr>
+
+       {% for author in a %}
+        <tr>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ author.username}}</td>
+            <td style="padding: 10px; border: 1px solid #ccc;">{{ author.nbbooks}}</td>
+            <td  style="padding: 10px; border: 1px solid #ccc;">
+                    <a href="{{ path('delete0_author', {'id': author.id}) }}">Delete</a>
+                </td>
+                
+        </tr>
+      {% endfor %}
